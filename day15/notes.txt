@@ -1,0 +1,14 @@
+ // A SessionFactory is set up once for an application!
+    final StandardServiceRegistry registry = 
+            new StandardServiceRegistryBuilder()
+            .configure() // configures settings from hibernate.cfg.xml
+            .build();
+    try {
+        sessionFactory = new MetadataSources(registry).buildMetadata().
+                          buildSessionFactory();
+    }
+    catch (Exception e) {
+        e.printStackTrace();
+        StandardServiceRegistryBuilder.destroy( registry );
+ 	}
+}
